@@ -3,7 +3,7 @@ var XW = {
     /* worker message */
     msg: 'xlsx',
     /* worker scripts */
-    worker: 'Excel/xlsxworker.js'
+    worker: 'UploadExcel/Scripts/Excel/xlsxworker.js'
 };
 
 var global_wb;
