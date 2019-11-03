@@ -3,7 +3,7 @@ var XW = {
     /* worker message */
     msg: 'xlsx',
     /* worker scripts */
-    worker: '../UploadExcel/Scripts/Excel/xlsxworker.js'
+    worker: 'Scripts/Excel/xlsxworker.js'
 };
 
 var global_wb;
@@ -64,9 +64,11 @@ var process_wb = (function () {
                 });
             if (roa.length) {
                 roa.shift(); //delete first rows
-                result["Sheet"] = roa
+                result["Sheet"] = roa;
             }
         });
+
+        dato(result)
         return JSON.stringify(result, 2, 2);
     };
 
@@ -77,3 +79,30 @@ var process_wb = (function () {
         if (typeof console !== 'undefined') console.log("output", new Date());
     };
 })();
+
+
+function dato(csv) {
+
+    let st = new ServiceStation()
+    let dato = st.mapServiceStation(csv)
+    enviar(dato)
+
+}
+
+async function enviar(csv) {
+    const respuesta = await fetch("UploadExcel/UploadExcel", {
+        headers: { "accept": "application/json", "content-type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({
+            model: csv
+        })
+    })
+    const result = await respuesta.json()
+
+    console.log(result)
+    //En caso correcto
+    //if (result.Data.Status === ResponseStatus.Success) {
+    //    this.nuevo()
+    //}
+    await swal("Hola", "Mensaje", "success")
+}

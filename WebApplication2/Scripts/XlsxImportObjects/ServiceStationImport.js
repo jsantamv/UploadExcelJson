@@ -9,8 +9,8 @@ class ServiceStation {
     }
 
     mapServiceStation(csv) {
-        var rows = csv.Sheet1;
-        rows.shift();
+        var rows = csv.Sheet;
+        //rows.shift();
         var serviceStations = rows.map(
             r => new ServiceStation(r[0], r[1], r[2], r[3], r[4])
         );        

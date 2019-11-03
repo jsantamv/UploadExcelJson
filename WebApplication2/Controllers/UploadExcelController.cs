@@ -13,5 +13,26 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+
+        public JsonResult UploadExcel(IEnumerable<Models.ServiceStation> model)
+        {
+            try
+            {
+                return Json(new
+                {
+                    result = model,
+                    Respuesta = "Se ejecuto correctamente"
+                }, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    result = ex,
+                    Respuesta = "Erronea"
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }
