@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Subir Archivos de Excel";
+}
+
+<h2>Subir Archivos de Excel</h2>
+
+<form>
+    <!-- <label for="csv_file" class="control-label col-sm-3 text-right">CSV file to import</label> -->
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <div class="card well-lg p-5" style="background-color: #eee;" id="drop">
+                    Arrastre un Excel y sueltelo en este lugar
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 form-group">
+        <input type="file" id="xlf" name="xlfile" class="form-control">
+    </div>
+
+</form>
+
+
+<script src="~/Scripts/Excel/shim.js"></script>
+<script src="~/Scripts/Excel/xlsx.full.min.js"></script>
+<script src="~/Scripts/XlsxImportObjects/ServiceStation.js"></script>
+<script src="~/Scripts/XlsxImportObjects/importExcel.js"></script>
