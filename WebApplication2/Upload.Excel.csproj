@@ -146,6 +146,7 @@
     <Content Include="Scripts\Excel\xlsx.full.min.js" />
     <Content Include="Scripts\Excel\xlsx.js" />
     <Content Include="Scripts\Excel\xlsxworker.js" />
+    <Content Include="Scripts\ImportXlsx_OLD.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
