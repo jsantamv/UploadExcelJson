@@ -34,5 +34,28 @@ namespace WebApplication2.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        public JsonResult UploadExcel2(string data)
+        {
+            try
+            {
+                return Json(new
+                {
+                    result = data,
+                    Respuesta = "Se ejecuto correctamente"
+                }, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    result = ex,
+                    Respuesta = "Erronea"
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
     }
 }

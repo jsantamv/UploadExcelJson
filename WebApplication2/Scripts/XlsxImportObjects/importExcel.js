@@ -85,10 +85,16 @@ function dato(csv) {
 
     let st = new ServiceStation()
     let dato = st.mapServiceStation(csv)
-    enviar(dato)
+    //enviar(dato)
+    //sendControllerJquery(dato)
+    enviar2(dato)
 
 }
 
+/**
+ * Enviando un Objeto
+ * @param {any} csv
+ */
 async function enviar(csv) {
     const respuesta = await fetch("UploadExcel/UploadExcel", {
         headers: { "accept": "application/json", "content-type": "application/json" },
@@ -105,4 +111,44 @@ async function enviar(csv) {
     //    this.nuevo()
     //}
     await swal("Hola", "Mensaje", "success")
+}
+
+/**
+ * Enviando un String JSON con jquery
+ * @param {any} csv
+ */
+function sendControllerJquery(csv) {
+    const data = JSON.stringify(csv)
+
+    $.ajax({
+        url: 'UploadExcel/UploadExcel2',
+        type: 'POST',
+        data: JSON.stringify({ data: data }), //JSON.stringify({ jsonString: stringJson }), //JSON.stringify({ TerminalId: terminalId }),
+        dataType: 'text',
+        contentType: 'application/json',
+        success: function (data) {
+            console.log(data)
+        }
+    });
+}
+
+/**
+ * Enviando un String JSON con Vanilla Javascript
+ * @param {any} csv
+ */
+async function enviar2(csv) {
+
+    const data = JSON.stringify(csv)
+
+    const respuesta = await fetch("UploadExcel/UploadExcel2", {
+        headers: { "accept": "application/json", "content-type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({ data: data })
+    })
+    const result = await respuesta.json()
+
+    console.log(result)
+
+    await swal("Hola", result, "success")
+
 }
